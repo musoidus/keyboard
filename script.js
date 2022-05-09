@@ -76,7 +76,7 @@ const sizes = {
 };
 
 let cursorPosition = 0;
-let lang = 'ru';
+let lang = localStorage.getItem('keyboard-lang') || 'en';
 
 function generatePage() {
   let header = '<h1>MacBook pro 2017 keyboard</h1>';
@@ -166,6 +166,7 @@ function btnClickHandler(event) {
     cursorPosition = textarea.value.length;
   } else if (currentKey === 'MetaLeft' || currentKey === 'MetaRight') {
     lang = lang === 'en' ? 'ru' : 'en';
+    localStorage.setItem('keyboard-lang', lang);
     document.querySelector('.keyboard-wrapper').remove();
     generateKeyboard();
   } else if (currentKey === 'CapsLock') {
