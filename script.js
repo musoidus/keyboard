@@ -37,7 +37,7 @@ const keys = {
   KeyJ: ['j', 'о'],
   KeyK: ['k', 'л'],
   KeyL: ['l', 'д'],
-  Semicolon: [';', '{'],
+  Semicolon: [';', ':'],
   Quote: ["'", '"'],
   Enter: ['return', 'enter'],
   ShiftLeft: ['shift'],
@@ -59,10 +59,12 @@ const keys = {
   Space: [' '],
   MetaRight: ['command', '⌘'],
   AltRight: ['option', 'alt'],
-  ArrowLeft: ['⇦'],
-  ArrowUp: ['⇧'],
-  ArrowDown: ['⇨'],
-  ArrowRight: ['⇩'],
+  ArrowLeft: ['←'],
+  Arrows: {
+    ArrowUp: ['↑'],
+    ArrowDown: ['↓'],
+  },
+  ArrowRight: ['→'],
 };
 
 const sizes = {
@@ -72,6 +74,8 @@ const sizes = {
   size4: ['ShiftRight', 'ShiftLeft'],
   size5: ['Space'],
 };
+
+let cursorPosition = 0;
 
 function generatePage() {
   let header = '<h1>MacBook pro 2017 keyboard</h1>';
@@ -84,11 +88,21 @@ function generatePage() {
 function generateKeyboard() {
   let html = '<div class="keyboard-wrapper">';
   for (let key in keys) {
-    html += `<div class='btn' data-keycode='${key}'><span class='text-top'>
+    if (key === 'Arrows') {
+      //MAKE ARROW SECTION
+      html += '<div class="arrows-wrapper">';
+      for (let arrow in keys[key]) {
+        html += `<div class='btn' data-keycode='${arrow}'>
+        <span class='text-bottom'>${keys[key][arrow]}</span></div>`;
+      }
+      html += '</div>';
+    } else {
+      html += `<div class='btn' data-keycode='${key}'><span class='text-top'>
     ${key.startsWith('Key') ? '' : keys[key][1] || ''}
     </span><span class='text-bottom'>${
       key.startsWith('Key') ? keys[key][0].toUpperCase() : keys[key][0]
     }</span></div>`;
+    }
   }
   html += '</div>';
   document.body.insertAdjacentHTML('beforeend', html);
@@ -115,18 +129,48 @@ function btnClickHandler(event) {
 
   if (currentKey === 'Backspace') {
     textarea.value = textarea.value.substring(0, textarea.value.length - 1);
+    textarea.focus();
+    cursorPosition = textarea.value.length;
   } else if (currentKey === 'CapsLock') {
     document
       .querySelector('[data-keycode=CapsLock]')
       .classList.toggle('caps-on');
+    textarea.focus();
+    cursorPosition = textarea.value.length;
   } else if (currentKey === 'ShiftLeft' || currentKey === 'ShiftRight') {
     document
       .querySelector(`[data-keycode=${currentKey}]`)
       .classList.toggle('selected');
+    textarea.focus();
+    cursorPosition = textarea.value.length;
   } else if (currentKey === 'Tab') {
-    textarea.value += '   ';
+    textarea.value += '	';
+    textarea.focus();
+    cursorPosition = textarea.value.length;
   } else if (currentKey === 'Enter') {
     textarea.value += '\n';
+    textarea.focus();
+    cursorPosition = textarea.value.length;
+  } else if (currentKey === 'ArrowLeft') {
+    if (cursorPosition >= 1) {
+      cursorPosition = cursorPosition - 1;
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+    }
+    textarea.focus();
+  } else if (currentKey === 'ArrowRight') {
+    if (cursorPosition <= textarea.value.length - 1) {
+      cursorPosition = cursorPosition + 1;
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+    }
+    textarea.focus();
+  } else if (currentKey === 'ArrowUp') {
+    cursorPosition = 0;
+    textarea.setSelectionRange(cursorPosition, cursorPosition);
+    textarea.focus();
+  } else if (currentKey === 'ArrowDown') {
+    cursorPosition = textarea.value.length;
+    textarea.setSelectionRange(cursorPosition, cursorPosition);
+    textarea.focus();
   } else if (currentKey.startsWith('Key')) {
     if (
       document
@@ -149,6 +193,8 @@ function btnClickHandler(event) {
     } else {
       textarea.value += keys[currentKey][0];
     }
+    textarea.focus();
+    cursorPosition = textarea.value.length;
   } else {
     textarea.value +=
       isCapsOn ||
@@ -167,12 +213,15 @@ function btnClickHandler(event) {
     document
       .querySelector(`[data-keycode=ShiftRight`)
       .classList.remove('selected');
+
+    textarea.focus();
+    cursorPosition = textarea.value.length;
   }
-  textarea.focus();
 }
 
 function keyDownHandler(event) {
   document.querySelector('textarea').focus();
+  cursorPosition = document.querySelector('textarea').value.length;
   document
     .querySelector(`[data-keycode=${event.code}]`)
     .classList.add('key-down');
