@@ -3,12 +3,16 @@ $btn-bg-pressed: #762634;
 $scale: 3;
 $gap: 5px;
 $led-color: #2bd35a;
+* {
+  box-sizing: border-box;
+}
 
 body {
   background: $bg;
 }
 
-h1 {
+h1,
+h2 {
   text-align: center;
 }
 
@@ -23,8 +27,7 @@ textarea {
   flex-wrap: wrap;
   gap: $gap;
   width: calc(
-    ((136px / #{$scale}) + 10px) * 13 + (170px / #{$scale}) + (#{$gap} * 13) +
-      25px
+    ((170px / #{$scale}) * 13) + (270px / #{$scale}) + (#{$gap} * 13) + 40px
   );
   padding: 20px;
   margin: 0 auto;
@@ -37,8 +40,9 @@ textarea {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: calc(136px / #{$scale});
-  height: calc(140px / #{$scale});
+  position: relative;
+  width: calc(170px / #{$scale});
+  height: calc(170px / #{$scale});
   padding: 5px;
   background: linear-gradient(135deg, #1a1c28 0%, #05060b 100%);
   border-radius: 8px;
@@ -50,20 +54,20 @@ textarea {
   &.key-down {
     background: $btn-bg-pressed;
   }
-  q &.size1 {
-    width: calc(170px / #{$scale});
+  &.size1 {
+    width: calc(220px / #{$scale});
   }
   &.size2 {
-    width: calc(204px / #{$scale});
+    width: calc(270px / #{$scale});
   }
   &.size3 {
-    width: calc(246px / #{$scale});
+    width: calc(312px / #{$scale});
   }
   &.size4 {
-    width: calc(322px / #{$scale});
+    width: calc(405px / #{$scale});
   }
   &.size5 {
-    width: calc(744px / #{$scale});
+    width: calc(910px / #{$scale});
   }
   span {
     display: block;
@@ -79,4 +83,13 @@ textarea {
 
 .selected {
   background: $btn-bg-pressed;
+}
+
+.arrows-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  .btn {
+    height: calc(200px / (#{$scale}* 2) - 6px);
+  }
 }

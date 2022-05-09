@@ -1,70 +1,70 @@
 const keys = {
-  Backquote: ['`', '~'],
-  Digit1: ['1', '!'],
-  Digit2: ['2', '@'],
-  Digit3: ['3', '#'],
-  Digit4: ['4', '$'],
-  Digit5: ['5', '%'],
-  Digit6: ['6', '^'],
-  Digit7: ['7', '&'],
-  Digit8: ['8', '*'],
-  Digit9: ['9', '('],
-  Digit0: ['0', ')'],
-  Minus: ['-', '_'],
-  Equal: ['=', '+'],
-  Backspace: ['delete'],
-  Tab: ['tab'],
-  KeyQ: ['q', 'й'],
-  KeyW: ['w', 'ц'],
-  KeyE: ['e', 'у'],
-  KeyR: ['r', 'к'],
-  KeyT: ['t', 'е'],
-  KeyY: ['y', 'н'],
-  KeyU: ['u', 'г'],
-  KeyI: ['i', 'ш'],
-  KeyO: ['o', 'щ'],
-  KeyP: ['p', 'з'],
-  BracketLeft: ['[', '{'],
-  BracketRight: [']', '}'],
-  Backslash: ['\\', '|'],
-  CapsLock: ['caps lock', '•'],
-  KeyA: ['a', 'ф'],
-  KeyS: ['s', 'ы'],
-  KeyD: ['d', 'в'],
-  KeyF: ['f', 'а'],
-  KeyG: ['g', 'п'],
-  KeyH: ['h', 'р'],
-  KeyJ: ['j', 'о'],
-  KeyK: ['k', 'л'],
-  KeyL: ['l', 'д'],
-  Semicolon: [';', ':'],
-  Quote: ["'", '"'],
-  Enter: ['return', 'enter'],
-  ShiftLeft: ['shift'],
-  KeyZ: ['z', 'я'],
-  KeyX: ['x', 'ч'],
-  KeyC: ['c', 'с'],
-  KeyV: ['v', 'м'],
-  KeyB: ['b', 'и'],
-  KeyN: ['n', 'т'],
-  KeyM: ['m', 'ь'],
-  Comma: [',', '<'],
-  Period: ['.', '>'],
-  Slash: ['/', '?'],
-  ShiftRight: ['shift'],
-  fn: ['fn'],
-  ControlLeft: ['control'],
-  AltLeft: ['option', 'alt'],
-  MetaLeft: ['command', '⌘'],
-  Space: [' '],
-  MetaRight: ['command', '⌘'],
-  AltRight: ['option', 'alt'],
-  ArrowLeft: ['←'],
+  Backquote: { en: ['`', '~'], ru: ['ё', 'Ë'] },
+  Digit1: { en: ['1', '!'], ru: ['1', '!'] },
+  Digit2: { en: ['2', '@'], ru: ['2', '"'] },
+  Digit3: { en: ['3', '#'], ru: ['3', '№'] },
+  Digit4: { en: ['4', '$'], ru: ['4', ';'] },
+  Digit5: { en: ['5', '%'], ru: ['5', '%'] },
+  Digit6: { en: ['6', '^'], ru: ['6', ':'] },
+  Digit7: { en: ['7', '&'], ru: ['7', '?'] },
+  Digit8: { en: ['8', '*'], ru: ['8', '*'] },
+  Digit9: { en: ['9', '('], ru: ['9', '('] },
+  Digit0: { en: ['0', ')'], ru: ['0', ')'] },
+  Minus: { en: ['-', '_'], ru: ['-', '_'] },
+  Equal: { en: ['=', '+'], ru: ['=', '+'] },
+  Backspace: { en: ['delete'], ru: ['delete'] },
+  Tab: { en: ['tab'], ru: ['tab'] },
+  KeyQ: { en: ['q'], ru: ['й'] },
+  KeyW: { en: ['w'], ru: ['ц'] },
+  KeyE: { en: ['e'], ru: ['у'] },
+  KeyR: { en: ['r'], ru: ['к'] },
+  KeyT: { en: ['t'], ru: ['е'] },
+  KeyY: { en: ['y'], ru: ['н'] },
+  KeyU: { en: ['u'], ru: ['г'] },
+  KeyI: { en: ['i'], ru: ['ш'] },
+  KeyO: { en: ['o'], ru: ['щ'] },
+  KeyP: { en: ['p'], ru: ['з'] },
+  BracketLeft: { en: ['[', '{'], ru: ['х', 'Х'] },
+  BracketRight: { en: [']', '}'], ru: ['ъ', 'Ъ'] },
+  Backslash: { en: ['\\', '|'], ru: ['\\', '/'] },
+  CapsLock: { en: ['caps lock', '•'], ru: ['caps lock', '•'] },
+  KeyA: { en: ['a'], ru: ['ф'] },
+  KeyS: { en: ['s'], ru: ['ы'] },
+  KeyD: { en: ['d'], ru: ['в'] },
+  KeyF: { en: ['f'], ru: ['а'] },
+  KeyG: { en: ['g'], ru: ['п'] },
+  KeyH: { en: ['h'], ru: ['р'] },
+  KeyJ: { en: ['j'], ru: ['о'] },
+  KeyK: { en: ['k'], ru: ['л'] },
+  KeyL: { en: ['l'], ru: ['д'] },
+  Semicolon: { en: [';', ':'], ru: ['ж', 'Ж'] },
+  Quote: { en: ["'", '"'], ru: ['э', 'Э'] },
+  Enter: { en: ['return', 'enter'], ru: ['return', 'enter'] },
+  ShiftLeft: { en: ['shift'], ru: ['shift'] },
+  KeyZ: { en: ['z'], ru: ['я'] },
+  KeyX: { en: ['x'], ru: ['ч'] },
+  KeyC: { en: ['c'], ru: ['с'] },
+  KeyV: { en: ['v'], ru: ['м'] },
+  KeyB: { en: ['b'], ru: ['и'] },
+  KeyN: { en: ['n'], ru: ['т'] },
+  KeyM: { en: ['m'], ru: ['ь'] },
+  Comma: { en: [',', '<'], ru: ['б', 'Б'] },
+  Period: { en: ['.', '>'], ru: ['ю', 'Ю'] },
+  Slash: { en: ['/', '?'], ru: ['.', ','] },
+  ShiftRight: { en: ['shift'], ru: ['shift'] },
+  fn: { en: ['fn'], ru: ['fn'] },
+  ControlLeft: { en: ['control'], ru: ['control'] },
+  AltLeft: { en: ['option', 'alt'], ru: ['option', 'alt'] },
+  MetaLeft: { en: ['command', '⌘'], ru: ['command', '⌘'] },
+  Space: { en: [' '], ru: [' '] },
+  MetaRight: { en: ['command', '⌘'], ru: ['command', '⌘'] },
+  AltRight: { en: ['option', 'alt'], ru: ['option', 'alt'] },
+  ArrowLeft: { en: ['←'], ru: ['←'] },
   Arrows: {
     ArrowUp: ['↑'],
     ArrowDown: ['↓'],
   },
-  ArrowRight: ['→'],
+  ArrowRight: { en: ['→'], ru: ['→'] },
 };
 
 const sizes = {
@@ -76,11 +76,14 @@ const sizes = {
 };
 
 let cursorPosition = 0;
+let lang = 'ru';
 
 function generatePage() {
   let header = '<h1>MacBook pro 2017 keyboard</h1>';
+  let info = '<h2>⌘ to switch languages</h2>';
   let textarea = '<textarea rows="10" cols="70" autofocus></textarea>';
   document.body.insertAdjacentHTML('afterbegin', textarea);
+  document.body.insertAdjacentHTML('afterbegin', info);
   document.body.insertAdjacentHTML('afterbegin', header);
   generateKeyboard();
 }
@@ -89,7 +92,6 @@ function generateKeyboard() {
   let html = '<div class="keyboard-wrapper">';
   for (let key in keys) {
     if (key === 'Arrows') {
-      //MAKE ARROW SECTION
       html += '<div class="arrows-wrapper">';
       for (let arrow in keys[key]) {
         html += `<div class='btn' data-keycode='${arrow}'>
@@ -97,11 +99,41 @@ function generateKeyboard() {
       }
       html += '</div>';
     } else {
-      html += `<div class='btn' data-keycode='${key}'><span class='text-top'>
-    ${key.startsWith('Key') ? '' : keys[key][1] || ''}
+      if (lang === 'en') {
+        html += `<div class='btn' data-keycode='${key}'><span class='text-top'>
+    ${key.startsWith('Key') ? '' : keys[key][lang][1] || ''}
     </span><span class='text-bottom'>${
-      key.startsWith('Key') ? keys[key][0].toUpperCase() : keys[key][0]
+      key.startsWith('Key')
+        ? keys[key][lang][0].toUpperCase()
+        : keys[key][lang][0]
     }</span></div>`;
+      } else if (lang === 'ru') {
+        html += `<div class='btn' data-keycode='${key}'><span class='text-top'>
+    ${
+      key.startsWith('Key') ||
+      key === 'Backquote' ||
+      key === 'BracketLeft' ||
+      key === 'BracketRight' ||
+      key === 'Semicolon' ||
+      key === 'Quote' ||
+      key === 'Comma' ||
+      key === 'Period'
+        ? ''
+        : keys[key][lang][1] || ''
+    }
+    </span><span class='text-bottom'>${
+      key.startsWith('Key') ||
+      key === 'Backquote' ||
+      key === 'BracketLeft' ||
+      key === 'BracketRight' ||
+      key === 'Semicolon' ||
+      key === 'Quote' ||
+      key === 'Comma' ||
+      key === 'Period'
+        ? keys[key][lang][0].toUpperCase()
+        : keys[key][lang][0]
+    }</span></div>`;
+      }
     }
   }
   html += '</div>';
@@ -128,9 +160,14 @@ function btnClickHandler(event) {
     .classList.contains('caps-on');
 
   if (currentKey === 'Backspace') {
+    //TODO
     textarea.value = textarea.value.substring(0, textarea.value.length - 1);
     textarea.focus();
     cursorPosition = textarea.value.length;
+  } else if (currentKey === 'MetaLeft' || currentKey === 'MetaRight') {
+    lang = lang === 'en' ? 'ru' : 'en';
+    document.querySelector('.keyboard-wrapper').remove();
+    generateKeyboard();
   } else if (currentKey === 'CapsLock') {
     document
       .querySelector('[data-keycode=CapsLock]')
@@ -180,7 +217,7 @@ function btnClickHandler(event) {
         .querySelector(`[data-keycode=ShiftRight`)
         .classList.contains('selected')
     ) {
-      textarea.value += keys[currentKey][0].toUpperCase();
+      textarea.value += keys[currentKey][lang][0].toUpperCase();
 
       document
         .querySelector(`[data-keycode=ShiftLeft`)
@@ -189,9 +226,9 @@ function btnClickHandler(event) {
         .querySelector(`[data-keycode=ShiftRight`)
         .classList.remove('selected');
     } else if (isCapsOn) {
-      textarea.value += keys[currentKey][0].toUpperCase();
+      textarea.value += keys[currentKey][lang][0].toUpperCase();
     } else {
-      textarea.value += keys[currentKey][0];
+      textarea.value += keys[currentKey][lang][0];
     }
     textarea.focus();
     cursorPosition = textarea.value.length;
@@ -204,8 +241,8 @@ function btnClickHandler(event) {
       document
         .querySelector(`[data-keycode=ShiftRight`)
         .classList.contains('selected')
-        ? keys[currentKey][1]
-        : keys[currentKey][0];
+        ? keys[currentKey][lang][1]
+        : keys[currentKey][lang][0];
 
     document
       .querySelector(`[data-keycode=ShiftLeft`)
