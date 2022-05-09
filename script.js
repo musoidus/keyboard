@@ -208,6 +208,15 @@ function btnClickHandler(event) {
     cursorPosition = textarea.value.length;
     textarea.setSelectionRange(cursorPosition, cursorPosition);
     textarea.focus();
+  } else if (
+    currentKey === 'ControlLeft' ||
+    currentKey === 'AltLeft' ||
+    currentKey === 'ControlRight' ||
+    currentKey === 'AltRight' ||
+    currentKey === 'fn'
+  ) {
+    textarea.value += '';
+    textarea.focus();
   } else if (currentKey.startsWith('Key')) {
     if (
       document
