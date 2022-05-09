@@ -163,10 +163,12 @@ function btnClickHandler(event) {
     .classList.add('key-down');
 
   if (currentKey === 'Backspace') {
-    //TODO
-    textarea.value = textarea.value.substring(0, textarea.value.length - 1);
+    textarea.value =
+      textarea.value.substring(0, cursorPosition - 1) +
+      textarea.value.substring(cursorPosition, textarea.value.length);
+    cursorPosition = cursorPosition - 1;
+    textarea.setSelectionRange(cursorPosition, cursorPosition);
     textarea.focus();
-    cursorPosition = textarea.value.length;
   } else if (currentKey === 'MetaLeft' || currentKey === 'MetaRight') {
     lang = lang === 'en' ? 'ru' : 'en';
     localStorage.setItem('keyboard-lang', lang);
