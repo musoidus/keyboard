@@ -179,21 +179,21 @@ function btnClickHandler(event) {
       .querySelector('[data-keycode=CapsLock]')
       .classList.toggle('caps-on');
     textarea.focus();
-    cursorPosition = textarea.value.length;
+    //cursorPosition = textarea.value.length;
   } else if (currentKey === 'ShiftLeft' || currentKey === 'ShiftRight') {
     document
       .querySelector(`[data-keycode=${currentKey}]`)
       .classList.toggle('selected');
     textarea.focus();
-    cursorPosition = textarea.value.length;
+    //cursorPosition = textarea.value.length;
   } else if (currentKey === 'Tab') {
     textarea.value += '	';
     textarea.focus();
-    cursorPosition = textarea.value.length;
+    // cursorPosition = textarea.value.length;
   } else if (currentKey === 'Enter') {
     textarea.value += '\n';
     textarea.focus();
-    cursorPosition = textarea.value.length;
+    // cursorPosition = textarea.value.length;
   } else if (currentKey === 'ArrowLeft') {
     if (cursorPosition >= 1) {
       cursorPosition = cursorPosition - 1;
@@ -232,7 +232,13 @@ function btnClickHandler(event) {
         .querySelector(`[data-keycode=ShiftRight`)
         .classList.contains('selected')
     ) {
-      textarea.value += keys[currentKey][lang][0].toUpperCase();
+      textarea.value =
+        textarea.value.substring(0, cursorPosition) +
+        keys[currentKey][lang][0].toUpperCase() +
+        textarea.value.substring(cursorPosition, textarea.value.length);
+      cursorPosition = cursorPosition + 1;
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      textarea.focus();
 
       document
         .querySelector(`[data-keycode=ShiftLeft`)
@@ -241,14 +247,26 @@ function btnClickHandler(event) {
         .querySelector(`[data-keycode=ShiftRight`)
         .classList.remove('selected');
     } else if (isCapsOn) {
-      textarea.value += keys[currentKey][lang][0].toUpperCase();
+      textarea.value =
+        textarea.value.substring(0, cursorPosition) +
+        keys[currentKey][lang][0].toUpperCase() +
+        textarea.value.substring(cursorPosition, textarea.value.length);
+      cursorPosition = cursorPosition + 1;
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      textarea.focus();
     } else {
-      textarea.value += keys[currentKey][lang][0];
+      textarea.value =
+        textarea.value.substring(0, cursorPosition) +
+        keys[currentKey][lang][0] +
+        textarea.value.substring(cursorPosition, textarea.value.length);
+      cursorPosition = cursorPosition + 1;
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      textarea.focus();
     }
-    textarea.focus();
-    cursorPosition = textarea.value.length;
+    // textarea.focus();
+    //cursorPosition = textarea.value.length;
   } else {
-    textarea.value +=
+    let insert =
       isCapsOn ||
       document
         .querySelector(`[data-keycode=ShiftLeft`)
@@ -259,6 +277,14 @@ function btnClickHandler(event) {
         ? keys[currentKey][lang][1]
         : keys[currentKey][lang][0];
 
+    textarea.value =
+      textarea.value.substring(0, cursorPosition) +
+      insert +
+      textarea.value.substring(cursorPosition, textarea.value.length);
+
+    cursorPosition = cursorPosition + 1;
+    textarea.setSelectionRange(cursorPosition, cursorPosition);
+
     document
       .querySelector(`[data-keycode=ShiftLeft`)
       .classList.remove('selected');
@@ -267,7 +293,7 @@ function btnClickHandler(event) {
       .classList.remove('selected');
 
     textarea.focus();
-    cursorPosition = textarea.value.length;
+    // cursorPosition = textarea.value.length;
   }
   setTimeout(() => {
     document
