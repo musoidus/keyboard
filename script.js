@@ -174,6 +174,7 @@ function btnClickHandler(event) {
     localStorage.setItem('keyboard-lang', lang);
     document.querySelector('.keyboard-wrapper').remove();
     generateKeyboard();
+    textarea.focus();
   } else if (currentKey === 'CapsLock') {
     document
       .querySelector('[data-keycode=CapsLock]')
