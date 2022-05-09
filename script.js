@@ -158,6 +158,9 @@ function btnClickHandler(event) {
   let isCapsOn = document
     .querySelector('[data-keycode=CapsLock]')
     .classList.contains('caps-on');
+  document
+    .querySelector(`[data-keycode=${currentKey}`)
+    .classList.add('key-down');
 
   if (currentKey === 'Backspace') {
     //TODO
@@ -264,6 +267,11 @@ function btnClickHandler(event) {
     textarea.focus();
     cursorPosition = textarea.value.length;
   }
+  setTimeout(() => {
+    document
+      .querySelector(`[data-keycode=${currentKey}`)
+      .classList.remove('key-down');
+  }, 100);
 }
 
 function keyDownHandler(event) {
